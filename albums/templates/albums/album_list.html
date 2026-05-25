@@ -1,0 +1,13 @@
+{% extends 'albums/base.html' %}
+{% block content %}
+<h2>Photo Albums</h2>
+{% for album in albums %}
+    <div class="card">
+        <h3><a href="{% url 'album-detail' album.id %}">{{ album.title }}</a></h3>
+        <p>{{ album.description }}</p>
+        <small>Owner: {{ album.owner.username }} | Access: {% if album.is_public %}Public{% else %}Private{% endif %}</small>
+    </div>
+{% empty %}
+    <p>No albums available.</p>
+{% endfor %}
+{% endblock %}

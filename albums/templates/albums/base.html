@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Album System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        .nav { margin-bottom: 20px; padding: 10px; background: #fff; border-radius: 4px; }
+        .card { background: #fff; padding: 20px; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <strong>User: {{ request.user.username }}</strong> | 
+        <a href="{% url 'album-list' %}">All Albums</a> | 
+        <a href="{% url 'album-create' %}">+ Create Album</a> |
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}<button type="submit">Logout</button>
+        </form>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

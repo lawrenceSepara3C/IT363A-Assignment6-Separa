@@ -1,0 +1,20 @@
+# --- Security & Credentials ---
+.env
+
+# --- Python / Django Environments ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# --- Local Databases & Runtime Files ---
+db.sqlite3
+*.log
+staticfiles/
+media/
+
+# --- Operating System Files ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
