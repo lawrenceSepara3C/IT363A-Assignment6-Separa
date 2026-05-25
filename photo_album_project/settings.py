@@ -153,7 +153,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+SSTATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # --- DJANGO 6.x UNIFIED STORAGE CONFIGURATION ---
@@ -162,11 +162,11 @@ STORAGES = {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        # Changed from CompressedManifestStaticFilesStorage to prevent asset-missing panics
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        # Using standard stable production storage to prevent Python 3.14 compilation bugs
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
 # --- BACKWARD COMPATIBILITY FALLBACKS FOR THIRD-PARTY PACKAGES ---
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
